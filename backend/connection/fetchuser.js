@@ -13,6 +13,7 @@ const fetchuser=async(req,res,next)=>{
     }
     else{
         console.log("no access");
+        next();
     }
 }
 module.exports=fetchuser;
