@@ -10,6 +10,7 @@ const port=4000;
 
 app.use('/api/auth',require("./routes/auth.js"));
 app.use('/api/song',require("./routes/song.js"));
+app.use('/api/liked',require("./routes/liked.js"));
 
 app.listen(port,()=>{
     console.log(`server running on port http://localhost:${port}`);
