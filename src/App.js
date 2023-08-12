@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+{<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={{ display: "flex", flexDirection: "row",backgroundColor:"black" }}>
+        <Navbar />
+        <Switch>
+          <div style={{marginLeft:"20%",width:"100%"}}>
+            <Route path="/">
+              <Home />
+            </Route>
+          </div>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

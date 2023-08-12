@@ -217,6 +217,8 @@ router.get("/homepage/language/:filtername",async(req,res)=>{
   }
 })
 
+
+// Add recently played song
 router.post("/addrecentlyplayed/:songid",fetchuser,async(req,res)=>{
   const songdata=await song.findById(req.params.songid);
   let success=false;
@@ -252,6 +254,7 @@ router.post("/addrecentlyplayed/:songid",fetchuser,async(req,res)=>{
   }
 })
 
+// Search song by name
 router.get("/search/:songname",async(req,res)=>{
   let success = false;
   const filter=req.params.songname;
