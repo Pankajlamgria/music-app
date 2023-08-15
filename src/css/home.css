@@ -8,10 +8,10 @@ body{
 .sidenavbar{
     padding-top: 1rem;
     position: fixed;
-    width: 19%;
+    width: 17%;
     margin: .5%;
     background-color: rgb(22 22 22);
-    height: 80%;
+    height: 85%;
     border-radius: 8px;
     
 }
@@ -25,12 +25,13 @@ body{
 
 .navbarlink a{
     text-decoration: none;
-    color: rgb(206, 206, 206);
+    color: rgb(160, 160, 160);
     font-size: 22px;
 }
 .navbarlink a:hover{
-    color: white;
+    color: rgb(255, 255, 255);
 }
+
 .navbarlink li{
     display: flex;
     align-items: center;
@@ -47,11 +48,12 @@ body{
 
 .homecontent{
     position: fixed;
-    width: 79.5%;
-    height: 80%;
+    width: 81.5%;
+    height: 85%;
     border-radius: 8px;
     margin-top: .5rem;
-    background:linear-gradient(to bottom,#274629,black);
+    /* background:linear-gradient(to bottom,#274629,black); */
+    background-color: #161616;
     overflow-y:scroll ;
 }
 .homecontent::-webkit-scrollbar {
@@ -70,10 +72,14 @@ body{
 .header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 4px;
     background-color: transparent;
     color: white;
-    margin-top: 3px;
+    margin-top: 1px;
+    /* position: fixed;
+    width: 81.5%;
+    opacity: 1; */
 }
 .spotifyname{
     margin-left: 1rem;
@@ -121,11 +127,12 @@ body{
 }
 
 .addvertismentcard{
-    background:linear-gradient(to bottom left,#213b22,black);
-    margin-top: .2rem;
+    background:linear-gradient(to bottom left,#283c29,black);
+    /* margin-top: 4rem; */
+
     display: flex;
     flex-direction: row;
-    height: 250px;
+    height: 235px;
     align-items: center;
     padding: 2rem;
     width: 92%;
@@ -179,4 +186,38 @@ body{
 }
 #playbtn:hover{
     scale: 1.1;
+}
+
+/* Artist section */
+.musicsecheadingcover{
+    margin-left:4% ;
+    margin-right: 4%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(212, 212, 212);
+}
+.musicsecheadingcover p{
+    cursor: pointer;
+}
+.musicsecheadingcover p:hover{
+    border-bottom: 1px solid white;
+}
+.musicsecheading{
+    color: white;
+    font-size: 30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.artistsec{
+    margin-top: .4rem;
+    /* height: 200px; */
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: row;
+    overflow-x:hidden ;
+    width: 92%;
+    margin-left: 4%;
+    margin-bottom: 1rem;
+    /* justify-content: space-around; */
 }

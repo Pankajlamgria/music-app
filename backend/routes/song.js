@@ -224,16 +224,20 @@ router.post("/addrecentlyplayed/:songid",fetchuser,async(req,res)=>{
   let success=false;
   try{
     const usersrecentsong=await recent.find({userid:req.userid});
+    
     if(usersrecentsong.length>=8){
       const firstrecentsongid=usersrecentsong[0].id;
       await recent.findByIdAndDelete(firstrecentsongid);
     }
+    
     const size=usersrecentsong.length;
-    if(songdata.songname===usersrecentsong[size-1].songname){
-      res.json({success:true,msg:"same song already exist in the last position."});
+    if(size!=0 && songdata.songname===usersrecentsong[size-1].songname){
+     
+      res.json({success:true,msg:"same song already exist at the last position."});
 
     }
     else{
+     
       const newrecentsong=await recent.create({
         songid:req.params.songid,
         userid:req.userid,
@@ -247,6 +251,7 @@ router.post("/addrecentlyplayed/:songid",fetchuser,async(req,res)=>{
       success=true;
       res.json({success,newrecentsong});
     }
+    
   }
   catch(error){
     res.json({success,error});

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useRef, useState } from "react";
 import "../css/home.css";
 import homeimg from "../img/home.png";
 import searchimg from "../img/search.png";
@@ -7,9 +7,15 @@ import "boxicons";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const [active,setactive]=useState({check:1});
+  // const audioelem=useRef();
+  // const playsong=()=>{
+  //   audioelem.current.play();
+  // }
   return (
     <div>
       <div className="sidenavbar">
+      {/* <audio id="sogplay" src="https://firebasestorage.googleapis.com/v0/b/imageuploadingtester.appspot.com/o/songs%2Fimg1?alt=media&token=0395011e-be1f-4ba0-9978-4d91b4f12ed8" ></audio> */}
+    
         <ul type="none" className="navbarlink" id="firstul">
           <li>
           <img className="navbaricon" src={homeimg} alt="" /><Link to="/" style={{color:(active.check===1)?("white"):("rgb(206, 206, 206)")}} onClick={()=>{setactive({check:1})}}> Home</Link>
