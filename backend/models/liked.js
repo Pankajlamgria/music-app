@@ -11,6 +11,8 @@ const likedschema=new Schema({
     songtype:{type:String,required:true},
     time:{type:Date,default:Date.now},
     like:{type:Boolean,required:true},
+    length:{type:Number,default:0},
+    ct:{type:Number,default:0},
 })
 
 module.exports=mongoose.model("likedsong",likedschema);

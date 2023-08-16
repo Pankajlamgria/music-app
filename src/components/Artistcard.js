@@ -16,7 +16,12 @@ const Artistcard = (props) => {
         <div className="songimg">
           <img id="musicimg" src={`${props.artist.imgurl}`} alt="" />
           <div className="playlogo">
-            <img src={playimg} onClick={handlesetsonglist} alt="" />
+            <img src={playimg} onClick={()=>{
+              handlesetsonglist();
+              contextcontent.audioelem.current.play();
+              contextcontent.audioelem.current.currentTime=0;
+              contextcontent.setisplay(true);
+            }} alt="" />
           </div>
         </div>
         <div className="songdetails">

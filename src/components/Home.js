@@ -14,6 +14,22 @@ const Home = () => {
   const contextcontent = useContext(musiccontext);
   useEffect(() => {
     contextcontent.gethomedat();
+    const album=localStorage.getItem("album");
+    let i=localStorage.getItem("index");
+    i=Number(i);
+    const albumtype=localStorage.getItem("albumtype");
+    if(album==='songtype'){
+       contextcontent.getsongtypesong(albumtype,i);
+    }
+    else if(album==="artist"){
+      contextcontent.getartistsong(albumtype,i);
+    }
+    else if(album==="language"){
+      contextcontent.getlanguagesong(albumtype,i);
+    }
+    else{
+      contextcontent.getartistsong("Arijit");
+    }
   }, []);
   return (
     <div>

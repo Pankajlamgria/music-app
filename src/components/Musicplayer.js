@@ -9,77 +9,109 @@ import volumeimg from "../img/volume.png";
 import previous from "../img/previous.png";
 const Musicplayer = () => {
   const contextcontent = useContext(musiccontext);
-  const [isplay, setisplay] = useState(false);
+  // const [isplay, setisplay] = useState(false);
+  // const audioelem = useRef();
+  // const clickRef = useRef();
+  
 
-  const audioelem = useRef();
-  const clickRef = useRef();
+  // const checkWidth = async (e) => {
+  //   contextcontent.setcurrentsong({
+  //     ...contextcontent.currentsong,
+  //     length: audioelem.current.duration,
+  //   });
+  //   let width = clickRef.current.clientWidth;
+  //   const offset = e.nativeEvent.offsetX;
+  //   const divprogress = (offset / width) * 100;
+  //   audioelem.current.currentTime =
+  //     (divprogress / 100) * audioelem.current.duration;
+  //   audioelem.current.play();
+  //   setisplay(true);
+  // };
+  // const onPlaying = () => {
+  //   const duration = audioelem.current.duration;
+  //   const ct = audioelem.current.currentTime;
+  //   contextcontent.setcurrentsong({
+  //     ...contextcontent.currentsong,
+  //     progress: (ct / duration) * 100,
+  //     length: duration,
+  //     ct: ct,
+  //   });
+  // };
+  // const handleend =async () => {
+  //   const ans=contextcontent.audioelem.current.pause();
+  //   contextcontent.setisplay(false);
+  //   if (ans !== undefined) {
+  //     ans.then(_ => {
+  //       // Automatic playback started!
+  //       // Show playing UI.
+  //     })
+  //     .catch(error => {
+  //       // Auto-play was prevented
+  //       // Show paused UI.
+  //     });
+  //   }
+  //   contextcontent.handlenextsong();
+  //   // let index=localStorage.getItem("index");
+  //   // index\
+  //   // contextcontent.setcurrentsong({
+  //   //   ...contextcontent.currentsong,
+  //   //   progress: 0,
+  //   //   ct: 0,
+  //   // });
+  // };
+  // const handlnoconnection = () => {
+  //   alert("Please check your connection.");
+  // };
+  // const handleplaypause = () => {
+  //   if (isplay) {
+  //     audioelem.current.pause();
+  //     setisplay(false);
+  //   } else {
+  //     audioelem.current.play();
+  //     setisplay(true);
+  //   }
+  // };
 
-  const checkWidth = async (e) => {
-    contextcontent.setcurrentsong({
-      ...contextcontent.currentsong,
-      length: audioelem.current.duration,
-    });
-    let width = clickRef.current.clientWidth;
-    const offset = e.nativeEvent.offsetX;
-    const divprogress = (offset / width) * 100;
-    audioelem.current.currentTime =
-      (divprogress / 100) * audioelem.current.duration;
-    audioelem.current.play();
-    setisplay(true);
-  };
-  const onPlaying = () => {
-    const duration = audioelem.current.duration;
-    const ct = audioelem.current.currentTime;
-    // console.log(ct);
-    contextcontent.setcurrentsong({
-      ...contextcontent.currentsong,
-      progress: (ct / duration) * 100,
-      length: duration,
-      ct: ct,
-    });
-  };
-  const handleend = () => {
-    audioelem.current.pause();
-    setisplay(false);
-    contextcontent.setcurrentsong({
-      ...contextcontent.currentsong,
-      progress: 0,
-      ct: 0,
-    });
-  };
-  const handlnoconnection = () => {
-    alert("Please check your connection.");
-  };
-  const handleplaypause = () => {
-    // console.log(audioelem.current.duration);
-    if (isplay) {
-      audioelem.current.pause();
-      setisplay(false);
-    } else {
-      audioelem.current.play();
-      setisplay(true);
-    }
-  };
+  // const handlevolume=(e)=>{
+  //   audioelem.current.volume=e.target.value/100;
+  // }
+  // const handlenextsong=()=>{
+  //   let index=localStorage.getItem("index");
+  //   index=Number(index);
+  //   index+=1;
+  //   console.log(contextcontent.songlist);
+  //   if(contextcontent.songlist.length===0){
+  //     index=0;
+  //   }
+  //   else{
+  //     if(index===contextcontent.songlist.length){
+  //       index=0;
+  //       contextcontent.setcurrentsong(contextcontent.songlist[index]);
+  //       localStorage.setItem("index",index);
+  //     }
+  //   }
+  //   audioelem.current.play();
+  //   setisplay(true);
+  //   audioelem.current.currentTime=0;
 
-  const handlevolume=(e)=>{
-    audioelem.current.volume=e.target.value/100;
-  }
-  const handlenextsong=()=>{
-    let index=localStorage.getItem("index");
-    index+=1;
-    console.log(contextcontent.songlist);
-    if(index===contextcontent.songlist.length){
-      index=0;
+  // }
+  // const handleprevioussong=()=>{
+
+  // }
+  const [first,setfirst]=useState(1);
+  function runfunc (){
+    console.log("loaded running");
+    if(first===1){
+      setfirst(2);
     }
     else{
-      contextcontent.setcurrentsong(contextcontent.songlist[index]);
+      contextcontent.audioelem.current.play();
     }
-    localStorage.setItem("index",index);
   }
-  const handleprevioussong=()=>{
-
+  const canplayEvent = () => {
+    contextcontent.audioelem.current.play()
+    contextcontent.audioelem.current.currentTime=0;
   }
-
   return (
     <div>
       <div className="musicplayer">
@@ -98,46 +130,51 @@ const Musicplayer = () => {
           <div className="musicplayercontainer">
             <div className="controls">
               <div className="changetrack">
-                <img src={previous} onClick={handleprevioussong} alt="" />
+                <img src={previous} onClick={contextcontent.handleprevioussong} alt="" />
               </div>
-              <div className="playpause" onClick={handleplaypause}>
+              <div className="playpause" onClick={contextcontent.handleplaypause}>
                 <img
                   src={play}
                   id="playicon"
-                  style={{ display: isplay ? "none" : "flex" }}
+                  style={{ display: contextcontent.isplay ? "none" : "flex" }}
                   alt=""
                 />
                 <img
                   src={pause}
                   id="pauseicon"
-                  style={{ display: isplay ? "flex" : "none" }}
+                  style={{ display: contextcontent.isplay ? "flex" : "none" }}
                   alt=""
                 />
               </div>
               <div className="changetrack">
-                <img src={next} onClick={handlenextsong} alt="" />
+                <img src={next} onClick={contextcontent.handlenextsong} alt="" />
               </div>
             </div>
+              {
+                <audio
+                  src={`${contextcontent.currentsong.songurl}`}
+                  ref={contextcontent.audioelem}
+                  onTimeUpdate={contextcontent.onPlaying}
+                  onEnded={contextcontent.handleend}
+                  onStalled={contextcontent.handlnoconnection}
+                  onCanplay={canplayEvent}
+                  preload="auto"
+                  volume
+                  // onLoadedData={runfunc}
+                  onCanPlay ={runfunc}
+                ></audio>
+              }
             <div className="navigation">
               <div className="currenttime">
+                
                 {Math.floor(contextcontent.currentsong.ct / 60)} :{" "}
                 {Math.ceil(contextcontent.currentsong.ct % 60)}
               </div>
               <div
                 className="navigation_back"
-                onClick={checkWidth}
-                ref={clickRef}
+                onClick={contextcontent.checkWidth}
+                ref={contextcontent.clickRef}
               >
-                {
-                  <audio
-                    src={`${contextcontent.currentsong.songurl}`}
-                    ref={audioelem}
-                    onTimeUpdate={onPlaying}
-                    onEnded={handleend}
-                    onStalled={handlnoconnection}
-                    volume
-                  ></audio>
-                }
 
                 <div
                   className="seek_bar"
@@ -148,7 +185,7 @@ const Musicplayer = () => {
               </div>
               <div className="endtime">
                 {Math.floor(contextcontent.currentsong.length / 60)} :{" "}
-                {Math.ceil(contextcontent.currentsong.length % 60)}0
+                {Math.ceil(contextcontent.currentsong.length % 60)}
               </div>
             </div>
           </div>
@@ -157,7 +194,7 @@ const Musicplayer = () => {
             <input
               id="sondvolcont"
               type="range"
-              onChange={handlevolume}
+              onChange={contextcontent.handlevolume}
               defaultValue="50"
               className="mx-2  volumecontrolknob "
             />

@@ -7,6 +7,8 @@ const songschema=new Schema({
     songurl:{type:String,required:true},
     language:{type:String,required:true},
     songtype:{type:String,required:true},
-    time:{type:Date,default:Date.now}
+    time:{type:Date,default:Date.now},
+    length:{type:Number,default:0},
+    ct:{type:Number,default:0},
 })
 module.exports=mongoose.model("song",songschema);

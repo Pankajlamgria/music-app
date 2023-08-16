@@ -7,7 +7,8 @@ const Recent = (props) => {
   const contextcontent=useContext(musiccontext);
   const handleplaymusic=async()=>{
     contextcontent.setcurrentsong(props.artist);
-    // contextcontent.setcurrentsong({...contextcontent.setcurrentsong,length:0,ct:0});
+    contextcontent.audioelem.current.currentTime=0;
+    contextcontent.handleplaypause();
   }
   return (
     <div>

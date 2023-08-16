@@ -8,6 +8,8 @@ const recentschema=new Schema({
     imgurl:{type:String,required:true},
     songurl:{type:String,required:true},
     language:{type:String,required:true},
-    songtype:{type:String,required:true}
+    songtype:{type:String,required:true},
+    length:{type:Number,default:0},
+    ct:{type:Number,default:0},
 })
 module.exports=mongoose.model("recentsong",recentschema);

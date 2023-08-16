@@ -18,7 +18,13 @@ const Languagecard = (props) => {
       <div className="songimg">
           <img id="musicimg" src={`${props.artist.imgurl}`} alt="" />
           <div className="playlogo">
-            <img src={playimg} alt="" onClick={handlesonglist} />
+            <img src={playimg} alt="" onClick={async()=>{
+              handlesonglist();
+              await contextcontent.audioelem.current.load();
+              await contextcontent.audioelem.current.play();
+              contextcontent.audioelem.current.currentTime=0;
+              contextcontent.setisplay(true);
+            }}/>
           </div>
         </div>
         <div className="songdetails">
