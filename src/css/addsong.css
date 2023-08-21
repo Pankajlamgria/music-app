@@ -1,0 +1,85 @@
+.addsongcontainer{
+    /* background-color: antiquewhite; */
+    overflow-y:auto ;
+    height: 525px;
+    margin-top: .2%;
+    border-radius: 12px;
+
+}
+.loadingcover{
+    margin-top: 4rem;
+    width: 80px;
+    height: 80px;
+    margin-left: 40%;
+    
+}
+.loadingcover img{
+    height: 100%;
+    width: 100%;
+    animation: rotate 4.6s linear forwards infinite;
+}
+.productformcover{
+    margin-top: 1rem;
+    width: 70%;
+    margin-left: 10%;
+    background-color: rgb(29, 29, 29);
+    border-radius: 8px;
+    padding: 1rem;
+}
+.productformcover h2{
+    color: white;
+}
+.entry{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+}
+.entry label{
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.entry input{
+    border-radius: 5px;
+    height: 30px;
+    padding-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.fileentry{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    margin-top: 2%;
+}
+.fileentry input{
+
+    border: 1px solid white;
+    width: 80%; 
+}
+#uploadbtn{
+    margin-top: 1rem;
+    height: 35px;
+    width: 80px;
+    font-size: 19px;
+    font-family:Arial, Helvetica, sans-serif ;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius:5px;
+
+}
+#imgloading{
+    
+    width: 40%;
+    height: 40%;
+    animation: rotate 4.6s linear forwards infinite;
+}
+@keyframes rotate {
+    0%{
+      /* scale: 1.5; */
+      transform: rotateX(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

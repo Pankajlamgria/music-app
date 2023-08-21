@@ -37,6 +37,7 @@ router.post("/addsong", fetchuser, async (req, res) => {
       bodydata.language === "" ||
       bodydata.type === ""
     ) {
+      // res.send({404:})
       res.json({ success, error: "Please give the appropriate details" });
     }
     if (await song.findOne({ songname: bodydata.songname })) {
@@ -110,14 +111,13 @@ router.post("/edit/:songid",fetchuser,async(req,res)=>{
   const userdetail=await auth.findById(req.userid);
   const oldsongdetail=await song.findById(req.params.songid);
   const bodydata=req.body;
-  bodydata.songname=titleCase(bodydata.songname);
+
   bodydata.language=titleCase(bodydata.language);
   bodydata.artistname=titleCase(bodydata.artistname);
   bodydata.songtype=titleCase(bodydata.songtype);
   let success=false;
   if(userdetail.email==="pankajlamgria@gmail.com"){
     const newdata={
-      songname: bodydata.songname,
       artistname: bodydata.artistname,
       language: bodydata.language,
       songtype: bodydata.songtype
@@ -172,12 +172,27 @@ router.post("/edit/:songid",fetchuser,async(req,res)=>{
 
 
 // Show all song
-router.get("/homepage",fetchuser,async(req,res)=>{
-  const recentsongs=await recent.find({userid:req.userid});
+router.get("/homepage",async(req,res)=>{
   const allartist=await artist.find({});
   const alllanguage=await language.find({});
   const allsongtype=await songtype.find({});
-  res.json({success:true,recentsongs,allartist,alllanguage,allsongtype})
+  // res.json({success:true,recentsongs,allartist,alllanguage,allsongtype})
+  res.json({success:true,allartist,alllanguage,allsongtype})
+})
+
+router.get("/recentsongs",fetchuser,async(req,res)=>{
+  const recentsongs=await recent.find({userid:req.userid});
+  res.json({success:true,recentsongs});
+})
+// show song by Id
+router.get("/findsong/:id",async(req,res)=>{
+  const songdata=await song.findById(req.params.id);
+  res.json({success:true,songdata});
+})
+
+router.get("/recentsongs",fetchuser,async(req,res)=>{
+  const recentsongs=await recent.find({userid:req.userid});
+  res.json({success:true,recentsongs});
 })
 
 // Show songs of artist block

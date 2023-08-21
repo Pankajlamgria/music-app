@@ -5,6 +5,7 @@ import { useContext } from "react";
 import play from "../img/playtriangle.png";
 import pause from "../img/pause.png";
 import next from "../img/next.png";
+import Loading from "../img/darkloading.png";
 import volumeimg from "../img/volume.png";
 import previous from "../img/previous.png";
 const Musicplayer = () => {
@@ -12,7 +13,6 @@ const Musicplayer = () => {
   // const [isplay, setisplay] = useState(false);
   // const audioelem = useRef();
   // const clickRef = useRef();
-  
 
   // const checkWidth = async (e) => {
   //   contextcontent.setcurrentsong({
@@ -98,20 +98,20 @@ const Musicplayer = () => {
   // const handleprevioussong=()=>{
 
   // }
-  const [first,setfirst]=useState(1);
-  function runfunc (){
+  // const [first,setfirst]=useState(1);
+  function runfunc() {
     console.log("loaded running");
-    if(first===1){
-      setfirst(2);
-    }
-    else{
+    contextcontent.setmusicplayerloading(false);
+    if (contextcontent.first === 1) {
+      contextcontent.setfirst(2);
+    } else {
       contextcontent.audioelem.current.play();
     }
   }
-  const canplayEvent = () => {
-    contextcontent.audioelem.current.play()
-    contextcontent.audioelem.current.currentTime=0;
-  }
+  // const canplayEvent = () => {
+  //   contextcontent.audioelem.current.play()
+  //   contextcontent.audioelem.current.currentTime=0;
+  // }
   return (
     <div>
       <div className="musicplayer">
@@ -130,43 +130,59 @@ const Musicplayer = () => {
           <div className="musicplayercontainer">
             <div className="controls">
               <div className="changetrack">
-                <img src={previous} onClick={contextcontent.handleprevioussong} alt="" />
+                <img
+                  src={previous}
+                  onClick={contextcontent.handleprevioussong}
+                  alt=""
+                />
               </div>
-              <div className="playpause" onClick={contextcontent.handleplaypause}>
-                <img
-                  src={play}
-                  id="playicon"
-                  style={{ display: contextcontent.isplay ? "none" : "flex" }}
-                  alt=""
-                />
-                <img
-                  src={pause}
-                  id="pauseicon"
-                  style={{ display: contextcontent.isplay ? "flex" : "none" }}
-                  alt=""
-                />
+              <div
+                className="playpause"
+                onClick={contextcontent.handleplaypause}
+              >
+                {/* Loading */}
+                <div className="firstcontainer" style={{display:(contextcontent.musicplayerloading)?"block":"none"}}>
+                  <img src={Loading} id="darkloading"  alt="" />
+                </div>
+                <div className="secondcontiner" style={{display:(contextcontent.musicplayerloading)?"none":"block"}}>
+                  <img
+                    src={play}
+                    id="playicon"
+                    style={{ display: contextcontent.isplay ? "none" : "flex" }}
+                    alt=""
+                  />
+                  <img
+                    src={pause}
+                    id="pauseicon"
+                    style={{ display: contextcontent.isplay ? "flex" : "none" }}
+                    alt=""
+                  />
+                </div>
               </div>
               <div className="changetrack">
-                <img src={next} onClick={contextcontent.handlenextsong} alt="" />
+                <img
+                  src={next}
+                  onClick={contextcontent.handlenextsong}
+                  alt=""
+                />
               </div>
             </div>
-              {
-                <audio
-                  src={`${contextcontent.currentsong.songurl}`}
-                  ref={contextcontent.audioelem}
-                  onTimeUpdate={contextcontent.onPlaying}
-                  onEnded={contextcontent.handleend}
-                  onStalled={contextcontent.handlnoconnection}
-                  onCanplay={canplayEvent}
-                  preload="auto"
-                  volume
-                  // onLoadedData={runfunc}
-                  onCanPlay ={runfunc}
-                ></audio>
-              }
+            {
+              <audio
+                src={`${contextcontent.currentsong.songurl}`}
+                ref={contextcontent.audioelem}
+                onTimeUpdate={contextcontent.onPlaying}
+                onEnded={contextcontent.handleend}
+                onStalled={contextcontent.handlnoconnection}
+                // onCanplay={canplayEvent}
+                preload="auto"
+                volume
+                // onLoadedData={runfunc}
+                onCanPlay={runfunc}
+              ></audio>
+            }
             <div className="navigation">
               <div className="currenttime">
-                
                 {Math.floor(contextcontent.currentsong.ct / 60)} :{" "}
                 {Math.ceil(contextcontent.currentsong.ct % 60)}
               </div>
@@ -175,7 +191,6 @@ const Musicplayer = () => {
                 onClick={contextcontent.checkWidth}
                 ref={contextcontent.clickRef}
               >
-
                 <div
                   className="seek_bar"
                   style={{
@@ -190,7 +205,9 @@ const Musicplayer = () => {
             </div>
           </div>
           <div className="volumecontroler">
-            <div className="sondicon"><img src={volumeimg} alt="" /></div>
+            <div className="sondicon">
+              <img src={volumeimg} alt="" />
+            </div>
             <input
               id="sondvolcont"
               type="range"

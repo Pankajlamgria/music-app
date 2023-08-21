@@ -79,12 +79,13 @@
     width: 80%;
 }
 #playicon{
-    margin-left: 5px;
+    margin-left:8px;
     height: 70%;
-    width: 60%;
+    width:60%;
 }
 #pauseicon{
     height: 70%;
+    margin-left: 3px;
 }
 .changetrack{
     cursor: pointer;
@@ -95,6 +96,10 @@
 .changetrack img{
     width: 100%;
     height: 100%;
+}
+#darkloading{
+    margin-left: 3px;
+    animation: rotate 4.6s linear forwards infinite;
 }
 .navigation{
    /* background-color: antiquewhite; */
@@ -152,4 +157,9 @@
 .sondicon img{
     height: 100%;
     width: 100%;
+}
+#musicplayerloading{
+    height: 100%;
+    width: 100%;
+    animation: rotate 4.6s linear forwards infinite;
 }

@@ -5,15 +5,26 @@ const SECRET=process.env.secret;
 
 const fetchuser=async(req,res,next)=>{
     const authtoken=req.header('authtoken');
-    if(authtoken){
-        const tokendetail=jwt.verify(authtoken,`${SECRET}`);
-        req.userid=tokendetail.user.id;
-        // console.log(req.userid);
-        next();
+    // console.log(authtoken);
+
+    if(!authtoken){
+        console.log("no Authentication");
+        return res.json({success:false,error:"Authentication not matched"});
     }
-    else{
-        console.log("no access");
-        next();
-    }
+    let tokendetail=jwt.verify(authtoken,`${SECRET}`);
+    req.userid=tokendetail.user.id;
+    next();
+
+    // if(authtoken){
+    //     console.log("entered");
+    //     const tokendetail=jwt.verify(authtoken,`${SECRET}`);
+    //     req.userid=tokendetail.user.id;
+    //     // console.log(req.userid);
+    //     next();
+    // }
+    // else{
+    //     console.log("no access");
+    //     next();
+    // }
 }
 module.exports=fetchuser;
