@@ -1,5 +1,8 @@
 .musicplayer{
-    height: 13%;
+    height: 14%;
+    background: black;
+    z-index: 10;
+    border-radius: 8px;
     margin-bottom: .1%;
     margin-left: .5%;
     margin-right: .5%;
@@ -162,4 +165,77 @@
     height: 100%;
     width: 100%;
     animation: rotate 4.6s linear forwards infinite;
+}
+@media screen and (max-width:800px) {
+    .musicplayercontainer{
+        margin-right: 0px;
+        margin-left: 0px;
+        width:65%
+    }
+    .volumecontroler input[type="range"] {
+        height: 5px;
+        width: 95px;
+        margin-top: 44%;
+    }
+    .sondicon {
+        margin-top: 37%;
+    }
+    .songtitle {
+        font-size: 15px;
+    }
+    .musicdetailssec{
+        width: 38%;
+    }
+    .controls{
+        width: 28%;
+    }
+}
+@media screen and (max-width:500px) {
+    .volumecontroler{
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        justify-content:right;
+        width: 20px;
+        /* background-color: aliceblue; */
+        position: absolute;
+        right: 2.8rem;
+        top: 3rem;
+    }
+    .sondicon {
+        display: none;
+    }
+    .volumecontroler input[type="range"] {
+        display: none;
+        /* margin: 0px;
+        rotate: -90deg;
+        height: 5px;
+        width: 62px; */
+    }
+    .musicplayercontainer {
+        width: 98%;
+    }
+    .songartistname {
+      
+        display: none;
+    }
+    .currentimgcover {
+        
+    height: 65px;
+    width: 74px;
+    margin-left: 1rem;
+
+    }
+    .songtitle {
+        font-size: 13px;
+    }
+    .controls {
+        width: 35%;
+        margin-right: 0rem; 
+    }
+    .playpause{
+        width: 29px;
+        margin-left: .2rem;
+        margin-right: .2rem;
+    }
 }

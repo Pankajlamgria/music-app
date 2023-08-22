@@ -7,7 +7,8 @@ const Musicstate = (props) => {
   // const history=useHistory();
   const host = "http://localhost:4000";
   const [musicplayerloading, setmusicplayerloading] = useState(false);
-
+  
+  const [songfolder, setsongfolder] = useState([]);
   const [allartist, setallartist] = useState([]);
   const [language, setlanguage] = useState([]);
   const [songtype, setsongtype] = useState([]);
@@ -306,7 +307,7 @@ const Musicstate = (props) => {
       console.log("addedsuccesfful");
       getrecentsongs();
     } else {
-      alert(addrecentsong.error);
+      // alert(addrecentsong.error);
     }
   };
   const getuserdetail = async () => {
@@ -402,7 +403,6 @@ const Musicstate = (props) => {
   };
   const handlenextsong = async () => {
     setmusicplayerloading(true);
-    console.log("runned");
     let index = localStorage.getItem("index");
     index = Number(index);
     index += 1;
@@ -445,10 +445,30 @@ const Musicstate = (props) => {
     setisplay(true);
     audioelem.current.currentTime = 0;
   };
+  const fetchlikedsong=async(index)=>{
+    const responce=await fetch(`${host}/api/liked/showall`,{
+        method:"GET",
+        headers:{
+          "Content-Type":"application/json",
+          "authtoken":localStorage.getItem("musictoken"),
+        }
+      })
+      const favourate=await responce.json();
+      if(favourate.success){
+        setsonglist(favourate.allsong);
+        setcurrentsong(favourate.allsong[index]);
+      }
+      else{
+        alert("Something went wrong");
+      }
+  }
 
   return (
     <musiccontext.Provider
       value={{
+        songfolder,setsongfolder,
+        fetchlikedsong,
+        favsong,
         deletefavouratesong,
         setfavouratesong,
         getfavouratesong,

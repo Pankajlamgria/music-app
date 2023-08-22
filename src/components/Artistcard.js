@@ -17,7 +17,7 @@ const Artistcard = (props) => {
 
   return (
     <div>
-      <div className="card">
+      <div className="card" >
         <div className="songimg">
           <img
             style={{ display: loading ? "block" : "none" }}

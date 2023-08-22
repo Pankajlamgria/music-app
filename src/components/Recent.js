@@ -8,7 +8,11 @@ const Recent = (props) => {
   const [loading, setloading] = useState(true);
   const contextcontent = useContext(musiccontext);
   const handleplaymusic = async () => {
+    localStorage.setItem("album","recent");
+    localStorage.setItem("index",0);
+    localStorage.setItem("albumtype",props.artist.songid);
     contextcontent.setmusicplayerloading(true);
+    contextcontent.setsonglist(props.artist);
     contextcontent.setcurrentsong(props.artist);
     contextcontent.setisplay(true);
     contextcontent.audioelem.current.currentTime = 0;

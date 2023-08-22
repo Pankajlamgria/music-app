@@ -10,6 +10,8 @@ import Search from "./components/Search";
 import Allsongs from "./components/Allsongs";
 import Addsong from "./components/Addsong";
 import Editsong from "./components/Editsong";
+import Favourite from "./components/Favourite";
+import Showall from "./components/Showall";
 {
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>;
 }
@@ -29,7 +31,7 @@ function App() {
             >
               <Navbar />
               <Switch>
-                <div style={{ marginLeft: "18%", width: "100%" }}>
+                <div className="maincontainer">
                   <Route exact path="/">
                     <Home />
                   </Route>
@@ -47,6 +49,12 @@ function App() {
                   </Route>
                   <Route exact path="/editsong">
                     <Editsong/>
+                  </Route>
+                  <Route exact path="/liked">
+                    <Favourite/>
+                  </Route>
+                  <Route exact path="/showall">
+                    <Showall/>
                   </Route>
                 </div>
               </Switch>

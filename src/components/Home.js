@@ -38,7 +38,17 @@ const Home = () => {
       if (contextcontent.currentsong.length === 0) {
         contextcontent.playsong(albumtype);
       }
-    } else {
+    } 
+    else if (album === "recent") {
+      if (contextcontent.currentsong.length === 0) {
+        contextcontent.playsong(albumtype);
+      }
+    } 
+    else if(album==="liked" && i>=0){
+      contextcontent.fetchlikedsong(i);
+    }
+
+    else {
       contextcontent.getartistsong("Arijit");
     }
   }, []);
@@ -144,7 +154,10 @@ const Home = () => {
         </div>
         <div className="musicsecheadingcover">
           <h2 className="musicsecheading">All Artist</h2>
-          <p>Show all</p>
+          <p onClick={()=>{
+            localStorage.setItem("folder","artist");
+            history.push('/showall');
+          }}>Show all</p>
         </div>
         <div className="artistsec">
           {contextcontent.allartist.map((artist) => {
@@ -153,7 +166,10 @@ const Home = () => {
         </div>
         <div className="musicsecheadingcover">
           <h2 className="musicsecheading">All Language</h2>
-          <p>Show all</p>
+          <p onClick={()=>{
+            localStorage.setItem("folder","language");
+            history.push('/showall');
+          }}>Show all</p>
         </div>
         <div className="artistsec">
           {contextcontent.language.map((language) => {
@@ -164,7 +180,10 @@ const Home = () => {
         </div>
         <div className="musicsecheadingcover">
           <h2 className="musicsecheading">Spotify's Playlist</h2>
-          <p>Show all</p>
+          <p onClick={()=>{
+            localStorage.setItem("folder","songtype");
+            history.push('/showall');
+          }}>Show all</p>
         </div>
         <div className="artistsec">
           {contextcontent.songtype.map((songtype) => {
@@ -180,7 +199,6 @@ const Home = () => {
         >
           <div className="musicsecheadingcover">
             <h2 className="musicsecheading">Recently played</h2>
-            <p>Show all</p>
           </div>
           <div className="artistsec">
             {contextcontent.recent.map((song) => {

@@ -11,10 +11,43 @@ const Navbar = () => {
   const [active, setactive] = useState({ check: 1 });
   return (
     <div>
+
+      {/* NAV BAR FOR SMALL SCREEN */}
+      <div className="phonesidenav">
+        <div className="imgcover">
+        <Link to="/">
+            <img  onClick={() => {
+                setactive({ check: 1 });
+              }} className="navbaricon" src={homeimg} alt="" />
+            </Link>
+        </div>
+        <div className="imgcover"><Link to="/search" > 
+            <img  onClick={() => {
+                setactive({ check: 2 });
+              }}className="navbaricon" src={searchimg} alt="" />
+            </Link></div>
+        <div className="imgcover">
+            <img  onClick={() => {
+              if((localStorage.getItem("musictoken"))){
+                setactive({ check: 3 });
+                history.push("/liked");
+              }
+              else{
+                history.push("/signin");
+              }
+              }} className="navbaricon" src={favourite} alt="" />
+            </div>
+      </div>
+
+
       <div className="sidenavbar">
         <ul type="none" className="navbarlink" id="firstul">
           <li>
-            <img className="navbaricon" src={homeimg} alt="" />
+            <Link to="/">
+            <img  onClick={() => {
+                setactive({ check: 1 });
+              }} className="navbaricon" src={homeimg} alt="" />
+            </Link>
             <Link
               to="/"
               style={{
@@ -29,7 +62,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <img className="navbaricon" src={searchimg} alt="" />
+            <Link to="/search" > 
+            <img  onClick={() => {
+                setactive({ check: 2 });
+              }}className="navbaricon" src={searchimg} alt="" />
+            </Link>
             <Link
               to="/search"
               style={{
@@ -44,17 +81,18 @@ const Navbar = () => {
           </li>
         </ul>
         <hr style={{ color: "white" }} />
-        <ul type="none" className="navbarlink">
+        <ul type="none" className="navbarlink" style={{display:(localStorage.getItem("musictoken")?"block":"none")}}>
           <li>
-            <img className="navbaricon" src={favourite} alt="" />
+            <Link  to="/liked">
+            <img  onClick={() => {
+                setactive({ check: 3 });
+              }} className="navbaricon" src={favourite} alt="" />
+            </Link>
             <Link
-              to="/"
+              to="/liked"
               style={{
                 color: active.check === 3 ? "white" : "rgb(206, 206, 206)",
-              }}
-              onClick={() => {
-                setactive({ check: 3 });
-              }}
+              }} 
             >
               Favourite
             </Link>

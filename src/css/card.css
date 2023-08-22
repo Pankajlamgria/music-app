@@ -2,11 +2,12 @@
     cursor: pointer;
     width: 180px;
     height: 235px;
+    margin-bottom: .4rem;
     display: flex;
     flex-direction: column;
     background-color: rgb(28 30 30);
-    margin-left: .7rem;
-    margin-right: .7rem;
+    /* margin-left: .7rem;
+    margin-right: .7rem; */
     border-radius: 8px;
     align-items: center;
     transition: .5s;
@@ -14,6 +15,13 @@
 }
 .card:hover{
     background-color:rgb(48, 51, 51);
+}
+.artistsec{
+    display: flex;
+    flex-flow: row wrap;
+    height: 240px;
+    justify-content: space-evenly;
+    overflow: hidden;
 }
 .songimg{
     margin-top: 8%;
@@ -65,4 +73,190 @@
 .songimg:hover .playlogo{
     opacity: 1;
     transform: translate(0);
+}
+.phonesidenav{
+    background-color: rgb(50 77 53);
+    position: fixed;
+    z-index: 10;
+    top: 7rem;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: .4rem;
+    border-radius: 0px 8px 8px 0px;
+    display: none;
+}
+.maincontainer{
+    /* background-color: aliceblue; */
+    margin-left: 18%;
+    width: 100%;
+    height: 85%;
+}
+@media screen and (max-width:1000px) {
+    .card{
+        width: 195px;
+        margin-right: 2rem;
+        height: 250px;
+
+    }
+    .navbarlink li { 
+        margin-left: -1rem;
+    }
+    .navbarlink a {
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:910px) {
+    .card{
+        width: 195px;
+        margin-right: .2rem;
+        height: 250px;
+
+    }
+    .musicicon {
+        height: 35px;
+        width: 35px;
+    }
+    .addtextsec h2 {
+        font-size: 37px;
+    }
+    .addtextsec p {
+        font-size: 15px;
+    }
+
+}
+@media screen and (max-width:850px) {
+    .playlogo{
+        opacity: 1;
+        top: 6.8rem;
+        right: 1.9rem;
+    }
+    .sidenavbar{
+        display: none;
+    }
+    .phonesidenav{
+        display: flex;
+    }
+    .maincontainer{
+        margin-left: .5%;
+    }
+    .homecontent{
+        width: 99%;
+        left: 0px;
+        margin-left: .5%;
+    }
+    #playbtn{
+        width: 88px;
+    height: 36px;
+    }
+    
+}
+@media screen and (max-width:750px) {
+    .playlogo {
+        top: 8.8rem;
+        right: 2.4rem;
+    }
+    .card {
+        width: 241px;
+        margin-right: 1.5rem;
+        margin-left: 2rem;
+        height: 288px;
+    }
+    .songimg {
+        height: 185px;
+        width: 189px;
+    }
+    .artistsec{
+        height: 290px;
+    }
+}
+@media screen and (max-width:700px) {
+    .playlogo {
+        top: 7rem;
+        right: 1.8rem;
+    }
+    .card{
+        width: 195px;
+        margin-right: 1rem;
+        margin-left: 0rem;
+        height: 250px;
+    }
+    .songimg{
+        width: 160px;
+        height: 160px;
+    }
+    .artistsec{
+        height: 250px;
+    }
+    .addimgsec {
+        height: 210px;
+        width: 169px;
+    }
+    .addtextsec h2 {
+        font-size: 21px;
+    }
+    .addtextsec p {
+        font-size: 14px;
+    }
+    .time{
+        display: none;
+    }
+    .searchedsongdetials{
+        width: 209px;
+        /* background-color: aliceblue; */
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:500px) {
+    .playlogo {
+        opacity: 0;
+        top: 5rem;
+        right: 1rem;
+    }
+    .card{
+        width: 148px;
+    margin-right: 0rem;
+    margin-left: 0rem;
+    height: 197px;
+    }
+    .artistsec {
+        height: 202px;
+    }
+    
+    
+    .songimg{
+        height: 127px;
+    width: 125px;
+    }
+    .addtextsec {
+       
+        padding-left: 1rem;
+       
+    }
+    .loginsec{
+        margin-right: 1rem;
+    }
+    #playbtn{
+        width: 70px;
+        height: 28px;
+        font-size: 18px;
+    }
+    .addimgsec{
+        height: 195px;
+    }
+    .searchedsongdetials{
+        /* width: 100px; */
+        /* background-color: aliceblue; */
+        font-size: 12px;
+    }
+    .resultsonglist{
+        margin-left: 5%;
+    }
+    #signinbtn{
+        margin-right: -2rem;
+    }
+    .musicsecheading{
+        font-size: 25px;
+    }
 }

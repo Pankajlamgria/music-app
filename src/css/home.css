@@ -45,7 +45,9 @@ body{
 }
 
 /* Home Section */
-
+.artistfolder{
+    justify-content: space-evenly;
+}
 .homecontent{
     position: fixed;
     width: 81.5%;

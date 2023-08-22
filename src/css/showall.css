@@ -1,0 +1,20 @@
+.foldercontainer{
+    height: 83%;
+    /* position: absolute; */
+    margin-bottom: 10rem ;
+    
+    border-radius: 8px;
+    /* width: 800px; */
+    margin-top: .5%;
+    margin-right: .1%;
+    /* background: linear-gradient(to bottom,rgb(22, 41, 22),black); */
+    overflow-y: auto;
+    padding-top: 1rem;
+
+}
+.artistfolder{
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    
+}
