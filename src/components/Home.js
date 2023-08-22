@@ -52,6 +52,12 @@ const Home = () => {
       contextcontent.getartistsong("Arijit");
     }
   }, []);
+  const handlesetsonglist = async () => {
+    await contextcontent.getartistsong("Arijit singh");
+    localStorage.setItem("album", "artist");
+    localStorage.setItem("albumtype", "Arijit singh");
+    localStorage.setItem("index", 0);
+  };
   const handleshowuser = () => {
     if (user) {
       setuser(false);
@@ -147,7 +153,15 @@ const Home = () => {
                   </h2>
                 </div>
                 <p>Listen to something soft!</p>
-                <button id="playbtn">Play</button>
+                <button id="playbtn" onClick={() => {
+                contextcontent.setmusicplayerloading(true);
+                // console.log("song play");
+                handlesetsonglist();
+                contextcontent.audioelem.current.load();  
+                // contextcontent.audioelem.current.play();
+                contextcontent.audioelem.current.currentTime = 0;
+                contextcontent.setisplay(true);
+              }}>Play</button>
               </div>
             </div>
           </div>

@@ -173,7 +173,6 @@ const Musicplayer = () => {
                 ref={contextcontent.audioelem}
                 onTimeUpdate={contextcontent.onPlaying}
                 onEnded={contextcontent.handleend}
-                onStalled={contextcontent.handlnoconnection}
                 // onCanplay={canplayEvent}
                 preload="auto"
                 volume

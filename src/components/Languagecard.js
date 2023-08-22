@@ -41,7 +41,8 @@ const Languagecard = (props) => {
               onClick={async () => {
                 handlesonglist();
                 contextcontent.setmusicplayerloading(true);
-                contextcontent.audioelem.current.play();
+                // contextcontent.audioelem.current.play();
+                contextcontent.audioelem.current.load();
                 contextcontent.audioelem.current.currentTime = 0;
                 contextcontent.setisplay(true);
               }}
