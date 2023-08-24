@@ -5,7 +5,7 @@ const jwt=require("jsonwebtoken");
 const bcrypt=require('bcryptjs');
 const auth=require("../models/auth.js");
 const fetchuser = require("../connection/fetchuser.js");
-const SECRET=process.env.secret;
+// const SECRET="pankajlamgria";
 // console.log(SECRET);
 
 router.post("/signin",async(req,res)=>{
@@ -34,7 +34,7 @@ router.post("/signin",async(req,res)=>{
                 const token={
                     user:{id:createduser.id}
                 }
-                const authtoken=jwt.sign(token,`${SECRET}`);
+                const authtoken=jwt.sign(token,"pankajlamgria");
                 // console.log(authtoken);
                 success=true;
                 res.json({success,authtoken});
@@ -66,7 +66,7 @@ router.post("/login",async(req,res)=>{
                     const token={
                         user:{id:newuser.id}
                     };
-                    const authtoken=jwt.sign(token,`${SECRET}`);
+                    const authtoken=jwt.sign(token,"pankajlamgria");
                     success=true;
                     res.json({success,authtoken});
                 }

@@ -1,6 +1,6 @@
 {require("dotenv").config();}
 const jwt=require("jsonwebtoken");
-const SECRET=process.env.secret;
+// const SECRET="pankajlamgria";
 
 
 const fetchuser=async(req,res,next)=>{
@@ -10,8 +10,8 @@ const fetchuser=async(req,res,next)=>{
     if(!authtoken){
         console.log("no Authentication");
         return res.json({success:false,error:"Authentication not matched"});
-    }
-    let tokendetail=jwt.verify(authtoken,`${SECRET}`);
+    }   
+    let tokendetail=jwt.verify(authtoken,"pankajlamgria");
     req.userid=tokendetail.user.id;
     next();
 

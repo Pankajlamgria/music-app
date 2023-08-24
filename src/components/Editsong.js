@@ -29,7 +29,7 @@ const Editsong = () => {
         className="productformcover"
         style={{ display: loading ? "none" : "block" }}
       >
-        <h2>Add Song</h2>
+        <h2>Edit Song</h2>
         <form action="">
           
           <div className="entry">

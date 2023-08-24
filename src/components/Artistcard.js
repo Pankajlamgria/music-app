@@ -42,7 +42,7 @@ const Artistcard = (props) => {
                 // console.log("song play");
                 handlesetsonglist();
                 contextcontent.audioelem.current.load();  
-                // contextcontent.audioelem.current.play();
+                // contextcontent.audioelem.current.play();   
                 contextcontent.audioelem.current.currentTime = 0;
                 contextcontent.setisplay(true);
               }}

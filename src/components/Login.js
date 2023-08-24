@@ -167,7 +167,7 @@ const Login = () => {
           </div>
           
           <button type="submit" className="btn btn-primary" onClick={handlesignin}>
-            Log in
+            Sign in
           </button>
         </form>
       </div>
