@@ -6,7 +6,7 @@ const cors=require("cors");
 connect();
 app.use(cors());
 app.use(express.json());
-const port=4000;
+const port =process.env.PORT || 4000;
 
 app.use('/api/auth',require("./routes/auth.js"));
 app.use('/api/song',require("./routes/song.js"));
