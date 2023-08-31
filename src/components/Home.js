@@ -13,22 +13,38 @@ import Recent from "./Recent";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const Home = () => {
   const contextcontent = useContext(musiccontext);
+  console.log(contextcontent.currentsong);
   const [user, setuser] = useState(false);
   const history = useHistory();
+  const album2=localStorage.getItem("album");
+  if(!album2){
+    console.log("nothing");
+    localStorage.setItem("album","artist");
+    localStorage.setItem("index",0);
+    localStorage.setItem("folder","artist");
+    localStorage.setItem("albumtype","Arijit singh");
+    contextcontent.getartistsong("Arijit");
+    window.location.reload(false);
+  }
   useEffect(() => {
     if (localStorage.getItem("musictoken")) {
       contextcontent.getuserdetail();
       contextcontent.getrecentsongs();
     }
-    // contextcontent.setfirst(1);
-    // contextcontent.setisplay(false);
     contextcontent.gethomedat();
     const album = localStorage.getItem("album");
     let i = localStorage.getItem("index");
     i = Number(i);
     const albumtype = localStorage.getItem("albumtype");
-
-    if (album === "songtype") {
+    // if(!album){
+    //   console.log("nothing");
+    //   localStorage.setItem("album","artist");
+    //   localStorage.setItem("index",0);
+    //   localStorage.setItem("folder","artist");
+    //   localStorage.setItem("albumtype","Arijit singh");
+    //   contextcontent.getartistsong("Arijit");
+    // }
+     if (album === "songtype") {
       contextcontent.getsongtypesong(albumtype, i);
     } else if (album === "artist") {
       contextcontent.getartistsong(albumtype, i);
@@ -50,6 +66,7 @@ const Home = () => {
 
     else {
       contextcontent.getartistsong("Arijit");
+      // contextcontent.securrentsong
     }
   }, []);
   const handlesetsonglist = async () => {

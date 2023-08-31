@@ -7,7 +7,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const Login = () => {
   const history=useHistory();
   const contextcontent=useContext(musiccontext);
-  const host = "http://localhost:4000";
+  // const host = "http://localhost:4000";
+  const host = "https://music-backend2.onrender.com";
   const [logindetail,setlogindetail]=useState({email:"",password:""});
   const [signindetail,setsignindetail]=useState({email:"",password:"",name:""});
 
@@ -29,6 +30,7 @@ const Login = () => {
     if(loginres.success){
       localStorage.setItem("musictoken",loginres.authtoken);
       history.push("/");
+      window.location.reload(false);
     }
     else{
       alert("Incorrect details");
@@ -48,6 +50,7 @@ const Login = () => {
     if(signinres.success){
       localStorage.setItem("musictoken",signinres.authtoken);
       history.push("/");
+      window.location.reload(false);
     }
     else{
       alert("Incorrect details");
@@ -60,7 +63,6 @@ const Login = () => {
   }
   const handlelogin=(e)=>{
     e.preventDefault();
-    // console.log(logindetail);
     login(logindetail.email,logindetail.password);
   }
   return (

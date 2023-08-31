@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import "../css/musicplayer.css";
 import musiccontext from "../context/Musincontext";
 import { useContext } from "react";
@@ -10,95 +10,6 @@ import volumeimg from "../img/volume.png";
 import previous from "../img/previous.png";
 const Musicplayer = () => {
   const contextcontent = useContext(musiccontext);
-  // const [isplay, setisplay] = useState(false);
-  // const audioelem = useRef();
-  // const clickRef = useRef();
-
-  // const checkWidth = async (e) => {
-  //   contextcontent.setcurrentsong({
-  //     ...contextcontent.currentsong,
-  //     length: audioelem.current.duration,
-  //   });
-  //   let width = clickRef.current.clientWidth;
-  //   const offset = e.nativeEvent.offsetX;
-  //   const divprogress = (offset / width) * 100;
-  //   audioelem.current.currentTime =
-  //     (divprogress / 100) * audioelem.current.duration;
-  //   audioelem.current.play();
-  //   setisplay(true);
-  // };
-  // const onPlaying = () => {
-  //   const duration = audioelem.current.duration;
-  //   const ct = audioelem.current.currentTime;
-  //   contextcontent.setcurrentsong({
-  //     ...contextcontent.currentsong,
-  //     progress: (ct / duration) * 100,
-  //     length: duration,
-  //     ct: ct,
-  //   });
-  // };
-  // const handleend =async () => {
-  //   const ans=contextcontent.audioelem.current.pause();
-  //   contextcontent.setisplay(false);
-  //   if (ans !== undefined) {
-  //     ans.then(_ => {
-  //       // Automatic playback started!
-  //       // Show playing UI.
-  //     })
-  //     .catch(error => {
-  //       // Auto-play was prevented
-  //       // Show paused UI.
-  //     });
-  //   }
-  //   contextcontent.handlenextsong();
-  //   // let index=localStorage.getItem("index");
-  //   // index\
-  //   // contextcontent.setcurrentsong({
-  //   //   ...contextcontent.currentsong,
-  //   //   progress: 0,
-  //   //   ct: 0,
-  //   // });
-  // };
-  // const handlnoconnection = () => {
-  //   alert("Please check your connection.");
-  // };
-  // const handleplaypause = () => {
-  //   if (isplay) {
-  //     audioelem.current.pause();
-  //     setisplay(false);
-  //   } else {
-  //     audioelem.current.play();
-  //     setisplay(true);
-  //   }
-  // };
-
-  // const handlevolume=(e)=>{
-  //   audioelem.current.volume=e.target.value/100;
-  // }
-  // const handlenextsong=()=>{
-  //   let index=localStorage.getItem("index");
-  //   index=Number(index);
-  //   index+=1;
-  //   console.log(contextcontent.songlist);
-  //   if(contextcontent.songlist.length===0){
-  //     index=0;
-  //   }
-  //   else{
-  //     if(index===contextcontent.songlist.length){
-  //       index=0;
-  //       contextcontent.setcurrentsong(contextcontent.songlist[index]);
-  //       localStorage.setItem("index",index);
-  //     }
-  //   }
-  //   audioelem.current.play();
-  //   setisplay(true);
-  //   audioelem.current.currentTime=0;
-
-  // }
-  // const handleprevioussong=()=>{
-
-  // }
-  // const [first,setfirst]=useState(1);
   function runfunc() {
     console.log("loaded running");
     contextcontent.setmusicplayerloading(false);
@@ -108,16 +19,13 @@ const Musicplayer = () => {
       contextcontent.audioelem.current.play();
     }
   }
-  // const canplayEvent = () => {
-  //   contextcontent.audioelem.current.play()
-  //   contextcontent.audioelem.current.currentTime=0;
-  // }
+
   return (
-    // <div className="h2"></div>
     <div>
-      <div className="musicplayer">
+      <div className="musicplayer" >
         <div className="musicdetailssec">
           <div className="currentimgcover">
+          
             <img src={`${contextcontent.currentsong.imgurl}`} alt="songimg" />
           </div>
           <div className="currentsongdetial">
@@ -176,8 +84,8 @@ const Musicplayer = () => {
                 onEnded={contextcontent.handleend}
                 // onCanplay={canplayEvent}
                 preload="auto"
-                volume
-                // onLoadedData={runfunc}
+                volume="true"
+                onLoadedData={runfunc}
                 onCanPlay={runfunc}
               ></audio>
             }

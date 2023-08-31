@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 // import history from 'history';
 const Musicstate = (props) => {
   // const history=useHistory();
-  const host = "http://localhost:4000";
+  const host = "https://music-backend2.onrender.com";
   const [musicplayerloading, setmusicplayerloading] = useState(false);
   
   const [songfolder, setsongfolder] = useState([]);
@@ -23,7 +23,17 @@ const Musicstate = (props) => {
   
   const [first, setfirst] = useState(1);
 
-  const [currentsong, setcurrentsong] = useState([]);
+  const [currentsong, setcurrentsong] = useState([{
+    _id:"64e78ad14e0b5335fab79c4e",
+    songname:"Girl i need you",
+    artistname:"Arijit singh",
+    imgurl:"https://firebasestorage.googleapis.com/v0/b/spotifyclone-94304.appspot…",
+    songurl:"https://firebasestorage.googleapis.com/v0/b/spotifyclone-94304.appspot…",
+    language:"Hindi",
+    songtype:"Romantic",
+    length:0,
+    ct:0,
+    __v:0}]);
 
   const addsong=async(imgurl,songurl,songname,artistname,songtype,language)=>{
     const responce=await fetch(`${host}/api/song/addsong`,{
